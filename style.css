@@ -1,0 +1,12 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e5d9ff;
+}
+h1, h2 {
+  color:indigo;
+}
+p {
+  color: midnightblue;
+}
