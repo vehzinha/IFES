@@ -2,11 +2,12 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #e5d9ff;
+  background-color: #ccffcc;
 }
-h1, h2 {
-  color:indigo;
+h1, h2, ol {
+  color:#136e13;
+  font-family: Lucida Handwriting;
 }
 p {
-  color: midnightblue;
+  color:#093809;
 }
