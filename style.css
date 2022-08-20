@@ -6,8 +6,17 @@ html, body {
 }
 h1, h2, ol {
   color:#136e13;
-  font-family: Lucida Handwriting;
 }
 p {
   color:#093809;
+}
+h1 {
+  font-size: 40px;
+}
+h2 {
+  margin-top: 100px;
+}
+a {
+  text-decoration: ;
+  color:#093809 ;
 }
