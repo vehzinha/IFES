@@ -1,2 +1,2 @@
 # IFES
-Repositório para entregfar atividades (reclamar desse lugar maravilhoso :) )
+Repositório para entregar atividades (reclamar desse lugar maravilhoso :) )
