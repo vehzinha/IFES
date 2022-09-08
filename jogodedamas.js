@@ -1,11 +1,11 @@
-const tamanhoCelula = 40;
+const tamCel = 40;
 let pecaId = 0;
 let lf = 0;
 let la = 0;
 let c = "";
-document.body.append(criaTabuleiro());
+document.body.append(criarTab());
 
-function criaTabuleiro() {
+function criarTab() {
     const tamanho = 8;
     let tabela = document.createElement('table');
 
@@ -21,16 +21,16 @@ function criaTabuleiro() {
             let celula = document.createElement('td');
 			celula.setAttribute('id', i);
             linha.append(celula);
-            celula.style.width = `${tamanhoCelula}px`;
-            celula.style.height = `${tamanhoCelula}px`;
+            celula.style.width = `${tamCel}px`;
+            celula.style.height = `${tamCel}px`;
 			pecaId += 1;
             if (i % 2 == j % 2) {
                 celula.style.backgroundColor = 'black';
 				celula.setAttribute("class","droptarget");
                 if (i * 8 + j <= 24) {
-                    celula.append(criaPeca('black',pecaId));
+                    celula.append(criarPeca('black',pecaId));
                 } else if (i * 8 + j >= 40) {
-                    celula.append(criaPeca('red',pecaId));
+                    celula.append(criarPeca('red',pecaId));
                 }
             } else {
                 celula.style.backgroundColor = 'white';
@@ -40,19 +40,19 @@ function criaTabuleiro() {
     return tabela;
 }
 
-function criaPeca(cor,ws) {
+function criarPeca(cor,ws) {
     let imagem = document.createElement('img');
 		imagem.setAttribute('src', `img/${cor}.png`);
-		imagem.setAttribute('width', `${tamanhoCelula-4}px`);
-		imagem.setAttribute('height', `${tamanhoCelula-4}px`);
+		imagem.setAttribute('width', `${tamCel-4}px`);
+		imagem.setAttribute('height', `${tamCel-4}px`);
 		imagem.setAttribute('draggable','true');
 		imagem.setAttribute('id', ws);
 		imagem.setAttribute('class', cor);
     return imagem;
 }
 
-function dragstart(){
-	document.addEventListener("dragstart", function(event) {
+function drag1(){
+	document.addEventListener("drag1", function(event) {
 	  event.dataTransfer.setData("Text", event.target.id);
 	  la = event.path[1].id;
 	  c = event.path[0].className;
@@ -60,13 +60,13 @@ function dragstart(){
 	});
 }
 
-function dragend() {
-	document.addEventListener("dragend", function(event) {
+function drag2() {
+	document.addEventListener("drag2", function(event) {
 	});
 }
 
-function dragover() {
-	document.addEventListener("dragover", function(event) {
+function drag3() {
+	document.addEventListener("drag3", function(event) {
 	  event.preventDefault();
 	});
 }
@@ -87,7 +87,7 @@ function drop(){
 	});
 }
 
-dragstart();
-dragend();
-dragover();
+drag1();
+drag2();
+drag3();
 drop();
