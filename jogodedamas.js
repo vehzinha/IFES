@@ -42,7 +42,7 @@ function criarTab() {
 
 function criarPeca(cor,ws) {
     let imagem = document.createElement('img');
-		imagem.setAttribute('src', `img/${cor}.png`);
+		imagem.setAttribute('src', `${cor}.png`);
 		imagem.setAttribute('width', `${tamCel-4}px`);
 		imagem.setAttribute('height', `${tamCel-4}px`);
 		imagem.setAttribute('draggable','true');
