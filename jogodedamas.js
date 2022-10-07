@@ -1,8 +1,10 @@
 const tamanhoCelula = 40;
 let pecaId = 0;
-let lf = 0;
-let la = 0;
-let c = "";
+let la = 80;
+let lf = 81;
+let c = '';
+let cc= 0;
+let localCaptura = '';
 document.body.append(criaTabuleiro());
 
 function criaTabuleiro() {
@@ -15,11 +17,10 @@ function criaTabuleiro() {
 
     for (let i = 0; i < tamanho; i++) {
         let linha = document.createElement('tr');
-		
         tabela.append(linha);
         for (let j = 0; j < tamanho; j++) {
             let celula = document.createElement('td');
-			celula.setAttribute('id', i);
+			celula.setAttribute('id',`${j}` + '-' + `${i}`);
             linha.append(celula);
             celula.style.width = `${tamanhoCelula}px`;
             celula.style.height = `${tamanhoCelula}px`;
@@ -54,7 +55,7 @@ function criaPeca(cor,ws) {
 function dragstart(){
 	document.addEventListener("dragstart", function(event) {
 	  event.dataTransfer.setData("Text", event.target.id);
-	  la = event.path[1].id;
+	  la = event.path[1].id.toString();
 	  c = event.path[0].className;
 	  
 	});
@@ -112,7 +113,6 @@ function drop(){
 	}
 	});
 }
-
 
 dragstart();
 dragend();
