@@ -72,20 +72,47 @@ function dragover() {
 }
 function drop(){
 	document.addEventListener("drop", function(event) {
-		event.preventDefault();
-		if ( event.target.className == "droptarget") {
-			const data = event.dataTransfer.getData("Text");
-				let w = event.path[0];
-				let e = w.childElementCount;
-				lf = event.target.id;
-				console.log(event)
-				if(e == '0' && la != lf && lf - la == 1 || lf - la == -1){
-					if(c == "red" && la > lf || c == "black" && la < lf)
-					event.target.appendChild(document.getElementById(data));
-				}
+	event.preventDefault();
+	if ( event.target.className == "droptarget") {
+		const data = event.dataTransfer.getData("Text");
+		let w = event.path[0];
+		let e = w.childElementCount;
+		lf = event.target.id;
+		let x1 = la.substring(0,1);
+		let y1 = la.substring(2,3);
+		let x2 = lf.substring(0,1);
+		let y2 = lf.substring(2,3);
+		
+		if(c == 'black' && x2 < x1) {
+			localCaptura = (parseInt(x1) - 1).toString() + "-" + (parseInt(y1) + 1).toString();
+		} else if (c == 'black' && x2 > x1) {
+			localCaptura = (parseInt(x1) + 1).toString() + "-" + (parseInt(y1) + 1).toString();
+		} else if (c == 'red' && x2 > x1) {
+			localCaptura = (parseInt(x1) + 1).toString() + "-" + (parseInt(y1) - 1).toString();
+		} else if (c == 'red' && x2 < x1) {
+			localCaptura = (parseInt(x1) - 1).toString() + "-" + (parseInt(y1) - 1).toString();
 		}
+		tx = document.getElementById(localCaptura);
+		if(tx.childElementCount == '1') {
+			cc = tx.firstElementChild.className;
+			pc = tx.firstElementChild;
+			//console.log(localCaptura);
+			//console.log(pc);
+		}
+		if(e == '0' && y1 != y2) {
+			if(c == "red" && y1 > y2 && y1 - y2 == 1 || y1 - y2 == 2 && cc == 'black' || c == 'black' && y1 < y2 && y1 - y2 == -1 || y1 - y2 == -2 && cc == 'red') {
+				event.target.appendChild(document.getElementById(data));
+				if(y1 - y2 == 2 || y1 - y2 == -2) {
+					pc.remove();
+					cc = '';
+				}
+			}
+			
+		}
+	}
 	});
 }
+
 
 dragstart();
 dragend();
